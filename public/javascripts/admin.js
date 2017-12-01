@@ -18,6 +18,12 @@ app.controller('adminCtrl', [
 
     $scope.remove = function(candidate) {
       console.log("Removing candidate: " + candidate.name);
+      const index = $scope.candidates.indexOf(candidate);
+    
+      if (index !== -1) {
+        $scope.candidates.splice(index, 1);
+        console.log("Candidate removed successfully");
+      }
     };
 
   }
