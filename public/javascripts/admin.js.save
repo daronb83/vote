@@ -1,0 +1,35 @@
+var app = angular.module('admin', []);
+
+app.controller('adminCtrl', [
+  '$scope',
+  '$http',
+  function($scope, $http) {
+    $scope.candidates = [];
+
+    $scope.postCandidate = function(candidate) {
+      return $http.post('/candidates', candidate)
+    }
+ 
+    $scope.addCandidate = function() {
+      if ($scope.newCandidate.length > 0) {
+        console.log("Adding " + $scope.newCandidate);
+        $scope.candidates.push({ name: $scope.newCandidate, votes: 0 });
+        $scope.newCandidate = "";
+      }
+      else {
+        console.log("addCandidate() failed: name not entered");
+      }
+    };
+
+    $scope.remove = function(candidate) {
+      console.log("Removing candidate: " + candidate.name);
+      const index = $scope.candidates.indexOf(candidate);
+    
+      if (index !== -1) {
+        $scope.candidates.splice(index, 1);
+        console.log("Candidate removed successfully");
+      }
+    };
+
+  }
+]);
