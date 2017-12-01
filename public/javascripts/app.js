@@ -7,17 +7,24 @@ app.controller('MainCtrl', [
     $scope.candidates = [];
     $scope.selected = [];
       
-    $scope.candidates.push({ name:"Bob Smith", votes:0 });
-    $scope.candidates.push({ name:"Susan Summers", votes:1 });
+    $scope.candidates.push({ name:"Katya Sky", votes:0 });
+    $scope.candidates.push({ name:"Jenyth Lightsong", votes:0 });
+    $scope.candidates.push({ name:"Mirrielle Blackrose", votes:0 });
+    $scope.candidates.push({ name:"Alina Do'Vei", votes:0 });
 
     $scope.updateValues = function() {
+      console.log("Updating selected values");
       $scope.selected = [];
 
-      for (candidate in candidates) {
-        if (candidate.SELECTED === "Y") {
-          $scope.selected.push(candidate);
+      for (var i = 0; i < $scope.candidates.length; i++) {
+ 
+        if ($scope.candidates[i].SELECTED === "Y") {
+          $scope.candidates[i].votes += 1;
+          $scope.selected.push($scope.candidates[i]);
         }
       };
+
+      console.log($scope.selected);
     };
 
   },

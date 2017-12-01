@@ -1,17 +1,23 @@
 <html>
 <head>
   <title>Admin Page</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="javascripts/admin.js"></script>
 </head>
 
-<body>
+<body ng-app="admin" ng-controller="adminCtrl">
   <h1>Administrative Interface</h1>
 
-  <form>
-    <input type="text"></input>
-    <button>Add Canidate</button>
+  <form ng-submit="addCandidate()";>
+    <input type="text" ng-model="newCandidate"></input>
+    <button type="submit">Add Candidate</button>
   </form>
 
   <h1>Current Canidates</h1>
+  <div ng-repeat="candidate in candidates">
+    <span ng-click="remove(candidate)">X </span>
+    {{candidate.name}} - votes: {{candidate.votes}}
+  </div>
 
 </body>
 </html>

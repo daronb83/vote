@@ -11,19 +11,20 @@
     <h1>Voter Interface</h1>
   </div>
 
-
-  <h1>Current Candidates</h1>
-  <div ng-repeat="candidate in candidates">
-    <label>
+  <div id="vote">
+    <h1>Current Candidates</h1>
+    <div ng-repeat="candidate in candidates">
       <input type="checkbox" ng-model="candidate.SELECTED" ng-true-value="Y" ng-false-value="N" />
-      {{candidate.name}} votes: {{candidate.votes}}
-    </label>
-  </div>
-  <button type="submit" ng-submit="updateValues()">Submit</button>
-
+      {{candidate.name}}
+    </div><br>
+    <button type="submit" ng-click="updateValues()">Submit</button>
   <div>
+
+  <div id="submitted">
     <h1>Submitted Ballot</h1>
-    {{submission | json}}
+    <ul ng-repeat="candidate in selected">
+      <li>{{candidate.name}}</li>
+    </ul>
   </div>
 
 </body>
